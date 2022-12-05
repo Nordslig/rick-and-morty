@@ -5,7 +5,10 @@ import Navigation from "./Navigation";
 const RootLayout = () => {
   return (
     <Fragment>
-      <Navigation />
+      <header>
+        <h1>Rick and Morty!</h1>
+        <Navigation />
+      </header>
       <main>
         <Outlet />
       </main>

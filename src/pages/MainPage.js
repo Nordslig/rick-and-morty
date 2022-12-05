@@ -1,5 +1,11 @@
+import SearchBar from "../search/SearchBar";
+
 const MainPage = () => {
-  return <h1>Main Page!</h1>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 };
 
 export default MainPage;

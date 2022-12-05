@@ -9,9 +9,9 @@ const SearchBar = () => {
         avoid problems.
       </p>
       <form>
-        <label>Search:</label>
+        <label>Look for something:</label>
         <input />
-        <button></button>
+        <button>Search</button>
       </form>
     </div>
   );

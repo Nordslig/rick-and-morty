@@ -1,0 +1,26 @@
+.nav {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  font-size: 1.4rem;
+}
+
+.list {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  padding: 1rem;
+  list-style: none;
+  background-color: #a6d4e1;
+}
+
+.list a {
+  margin: 1rem 0;
+  padding: 0.4rem;
+  text-decoration: none;
+}
+
+.active {
+  background-color: black;
+  color: #a6d4e1;
+}
