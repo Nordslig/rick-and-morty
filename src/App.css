@@ -1,0 +1,17 @@
+header {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  /* background-image: repeating-radial-gradient(
+    #48e519,
+    #349718 10%,
+    #8cf72b 15%
+  ); */
+  background-color: #349718;
+  color: #fff;
+}
