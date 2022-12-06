@@ -9,7 +9,7 @@ const RootLayout = () => {
         <h1>Rick and Morty!</h1>
         <Navigation />
       </header>
-      <main>
+      <main style={{ height: "100%" }}>
         <Outlet />
       </main>
     </Fragment>

@@ -2,7 +2,7 @@ import SearchBar from "../search/SearchBar";
 
 const MainPage = () => {
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <SearchBar />
     </div>
   );
