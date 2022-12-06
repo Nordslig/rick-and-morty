@@ -4,7 +4,6 @@ import classes from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    // <nav className={classes.nav}>
     <ul className={classes.list}>
       <li>
         <NavLink
@@ -47,7 +46,6 @@ const Navigation = () => {
         </NavLink>
       </li>
     </ul>
-    // </nav>
   );
 };
 

@@ -1,6 +1,7 @@
 header {
-  height: 10rem;
+  /* height: 10rem; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
@@ -13,4 +14,8 @@ header {
   ); */
   background-color: #349718;
   color: #fff;
+}
+
+header h1 {
+  padding: 1rem 0;
 }
