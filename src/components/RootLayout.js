@@ -1,18 +1,19 @@
-import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 
+import classes from "./RootLayout.module.css";
+
 const RootLayout = () => {
   return (
-    <Fragment>
+    <div className={classes.all}>
       <header>
         <h1>Rick and Morty!</h1>
         <Navigation />
       </header>
-      <main style={{ height: "100%" }}>
+      <main>
         <Outlet />
       </main>
-    </Fragment>
+    </div>
   );
 };
 
