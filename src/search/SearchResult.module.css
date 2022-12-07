@@ -1,0 +1,41 @@
+.section {
+  width: 20%;
+  margin: 0 2% 2%;
+  background-color: #ffffffa9;
+  border: 1px solid black;
+  border-radius: 45px;
+  overflow: hidden;
+}
+
+.section h3 {
+  /* width: 100%; */
+  /* padding: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #004f00;
+  color: #fff; */
+}
+
+.section > p {
+  padding: 1rem 0.5rem;
+}
+
+.name {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #004f00;
+  color: #fff;
+}
+
+.question {
+  font-weight: bold;
+}
+
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+}

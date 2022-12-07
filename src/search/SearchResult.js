@@ -1,13 +1,21 @@
 import { Fragment } from "react";
 
+import classes from "./SearchResult.module.css";
+
 const SearchResult = () => {
   const charackter = (
-    <section>
-      <h3>Name</h3>
+    <section className={classes.section}>
+      <div className={classes.name}>
+        <h3>Name:</h3>
+        <p>Test name</p>
+      </div>
       {/* <img alt="character image" /> */}
-      <p>Status</p>
-      <p>Location</p>
-      <p>How many episodes they were in?</p>
+      <p className={classes.question}>Status:</p>
+      <p className={classes.answer}>Test status</p>
+      <p className={classes.question}>Location:</p>
+      <p className={classes.answer}>Test location</p>
+      <p className={classes.question}>How many episodes they were in?</p>
+      <p className={classes.answer}>Test number</p>
     </section>
   );
 
@@ -30,11 +38,14 @@ const SearchResult = () => {
   );
 
   return (
-    <Fragment>
+    <div className={classes.sections}>
       {charackter}
-      {location}
-      {episode}
-    </Fragment>
+      {charackter}
+      {charackter}
+      {charackter}
+      {charackter}
+      {/* {episode} */}
+    </div>
   );
 };
 
