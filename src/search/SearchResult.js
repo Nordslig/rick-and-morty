@@ -1,8 +1,18 @@
-import { Fragment } from "react";
+import { Fragment, useContext, useEffect } from "react";
+import ResultContext from "../store/result-context";
 
 import classes from "./SearchResult.module.css";
 
 const SearchResult = () => {
+  const resultCtx = useContext(ResultContext);
+
+  const resultName = resultCtx.name;
+
+  // useEffect(() => {
+  //   // resultName;
+  //   console.log("ta");
+  // }, [resultCtx.name]);
+
   const charackter = (
     <section className={classes.section}>
       <div className={classes.name}>
