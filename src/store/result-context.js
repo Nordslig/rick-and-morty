@@ -1,6 +1,7 @@
 import React from "react";
 
 const ResultContext = React.createContext({
+  results: [],
   name: [],
   status: "",
   lastLocation: {},

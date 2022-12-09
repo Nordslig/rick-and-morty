@@ -1,13 +1,13 @@
-import { Fragment } from "react";
+import classes from "./RandomElement.module.css";
 
 const RandomSearch = () => {
   const charackter = (
-    <section>
-      <h3>Name</h3>
+    <section className={classes.section}>
+      <h3 className={classes.name}>Name</h3>
       {/* <img alt="character image" /> */}
-      <p>Status</p>
-      <p>Location</p>
-      <p>How many episodes they were in?</p>
+      <p className={classes.info}>Status</p>
+      <p className={classes.info}>Location</p>
+      <p className={classes.info}>How many episodes they were in?</p>
     </section>
   );
 
@@ -30,11 +30,13 @@ const RandomSearch = () => {
   );
 
   return (
-    <div>
+    <div className={classes.RandomSearch}>
       <h2>Your random search is:</h2>
-      {charackter}
-      {location}
-      {episode}
+      <div className={classes.sections}>
+        {charackter}
+        {location}
+        {episode}
+      </div>
     </div>
   );
 };

@@ -22,17 +22,17 @@ const SearchBar = () => {
     // resultCtx.lastLocation = data.results[0].location.name;
     // resultCtx.episodesNumber = data.results[0].episode.length;
 
-    const arr = [...data.results];
+    resultCtx.results = [...data.results];
 
-    console.log(arr.values());
+    console.log(resultCtx.results);
 
-    arr.forEach((value) => {
-      for (const key in value) {
-        if (Object.hasOwnProperty.call(value, key)) {
-          const element = value[key];
-        }
-      }
-    });
+    // arr.forEach((value) => {
+    //   for (const key in value) {
+    //     if (Object.hasOwnProperty.call(value, key)) {
+    //       const element = value[key];
+    //     }
+    //   }
+    // });
 
     // console.log(data.results);
     // resultCtx.name = ]

@@ -1,5 +1,12 @@
+import SearchResults from "../search/SearchResults";
+
 const AllEpisodes = () => {
-  return <h2>All Episodes!</h2>;
+  return (
+    <div>
+      <h2>All Episodes!</h2>
+      <SearchResults />
+    </div>
+  );
 };
 
 export default AllEpisodes;

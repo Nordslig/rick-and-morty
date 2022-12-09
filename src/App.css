@@ -13,13 +13,23 @@ header h1 {
   padding: 1rem 0;
 }
 
+.all-elements {
+  width: 100%;
+}
+
+main h2 {
+  margin: 2% 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
 .about-search {
   width: 30%;
   margin: 5% 0;
   padding: 1.5rem;
   font-weight: bold;
   text-align: center;
-  /* text-transform: uppercase; */
   font-size: 1.8rem;
   background-color: rgb(0, 79, 0);
   border: black 1px solid;

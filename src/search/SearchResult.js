@@ -6,7 +6,7 @@ import classes from "./SearchResult.module.css";
 const SearchResult = () => {
   const resultCtx = useContext(ResultContext);
 
-  const resultName = resultCtx.name;
+  // const resultName = resultCtx.name;
 
   // useEffect(() => {
   //   // resultName;
@@ -54,7 +54,8 @@ const SearchResult = () => {
       {charackter}
       {charackter}
       {charackter}
-      {/* {episode} */}
+      {/* {!resultCtx.results && <p>Start searching!</p>}
+      {resultCtx.results && resultCtx.results.map(() => charackter)} */}
     </div>
   );
 };

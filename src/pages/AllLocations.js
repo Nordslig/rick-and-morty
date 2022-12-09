@@ -1,5 +1,12 @@
+import SearchResults from "../search/SearchResults";
+
 const AllLocations = () => {
-  return <h2>All Locations!</h2>;
+  return (
+    <div className="all-elements">
+      <h2>All Locations!</h2>
+      <SearchResults />
+    </div>
+  );
 };
 
 export default AllLocations;
