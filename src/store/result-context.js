@@ -1,26 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ResultContext = React.createContext({
+const resultContext = React.createContext({
   results: [],
-  name: [],
-  status: "",
-  lastLocation: {},
-  episodesNumber: [],
+  onFetch: () => {},
 });
 
 export const ResultContextProvider = (props) => {
-  // const contextValue = {
-  //   name,
-  //   status: status,
-  //   lastLocation: lastLocation.name,
-  //   episodesNumber: episodesNumber.length,
-  // };
+  const [fetched, setFetched] = useState();
+
+  const fetchedResults = (dataResults) => {
+    setFetched(dataResults);
+  };
+
+  const contextValue = {
+    results: fetched,
+    onFetch: fetchedResults,
+  };
 
   return (
-    <ResultContext.Provider value={ResultContext}>
+    <resultContext.Provider value={contextValue}>
       {props.children}
-    </ResultContext.Provider>
+    </resultContext.Provider>
   );
 };
 
-export default ResultContext;
+export default resultContext;
