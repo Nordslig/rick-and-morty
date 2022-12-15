@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ResultContext from "../store/result-context";
+import ResultContext from "../../store/result-context";
 
 import classes from "./SearchResult.module.css";
 

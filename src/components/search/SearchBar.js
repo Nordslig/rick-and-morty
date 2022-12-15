@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import ResultContext from "../store/result-context";
+import ResultContext from "../../store/result-context";
 import classes from "./SearchBar.module.css";
 
 const SearchBar = () => {

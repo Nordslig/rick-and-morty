@@ -1,4 +1,4 @@
-import SearchResults from "../search/SearchResults";
+import SearchResults from "../components/search/SearchResults";
 
 const AllEpisodes = () => {
   return (

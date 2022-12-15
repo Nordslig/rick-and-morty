@@ -1,6 +1,5 @@
-import { Fragment } from "react";
-import SearchBar from "../search/SearchBar";
-import SearchResult from "../search/SearchResult";
+import SearchBar from "../components/search/SearchBar";
+import SearchResult from "../components/search/SearchResult";
 
 const MainPage = () => {
   return (

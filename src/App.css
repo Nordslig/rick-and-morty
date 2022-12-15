@@ -49,3 +49,9 @@ main {
   justify-content: center;
   /* background-color: rgb(145, 175, 114); */
 }
+
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

@@ -1,5 +1,3 @@
-import SearchResults from "../search/SearchResults";
-
 const AllLocations = () => {
   const response = fetch("https://rickandmortyapi.com/api/character");
 

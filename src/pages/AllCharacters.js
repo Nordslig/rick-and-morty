@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
+import AllElements from "../components/AllElements";
 
 const AllCharacters = () => {
   const [page, setPage] = useState(1);
@@ -16,47 +17,28 @@ const AllCharacters = () => {
       setMaxPage(data.info.pages);
 
       setCharacters(data.results);
-      console.log("rerender1");
-      // console.log(data);
     };
 
     fetchData();
   }, [page]);
 
-  const character = (
-    <section>
-      <img width="300px" height="300px" />
-      <p>Name: </p>
-      <p></p>
-      <p>Status: </p>
-      <p></p>
-      <p>Last location: </p>
-      <p></p>
-    </section>
-  );
-
   return (
     <div>
       <h2>All Characters!</h2>
-      <div>
+      <div className="sections">
         {characters.length === 0 && <p>Something went wrong!</p>}
         {characters.map((char) => {
-          return (
-            <section key={char.id}>
-              <img src={char.image} width="300px" height="300px" />
-              <p>Name: </p>
-              <p>{char.name}</p>
-              <p>Status: </p>
-              <p>{char.status}</p>
-              <p>Last location: </p>
-              <p>{char.location.name}</p>
-            </section>
-          );
+          return <AllElements key={char.id} data={char} />;
         })}
       </div>
-      <button disabled={page === 1 ? true : false}>Previous</button>
       <button
-        onClick={() => setPage(2)}
+        onClick={() => setPage((prevState) => prevState - 1)}
+        disabled={page === 1 ? true : false}
+      >
+        Previous
+      </button>
+      <button
+        onClick={() => setPage((prevState) => prevState + 1)}
         disabled={page === maxPage ? true : false}
       >
         Next
