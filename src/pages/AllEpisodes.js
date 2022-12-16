@@ -1,10 +1,9 @@
-import SearchResults from "../components/search/SearchResults";
+import DisplayContent from "../components/DisplayContent";
 
 const AllEpisodes = () => {
   return (
     <div>
-      <h2>All Episodes!</h2>
-      <SearchResults />
+      <DisplayContent page="episode" />
     </div>
   );
 };

@@ -17,28 +17,7 @@ const SearchBar = () => {
 
     const data = await response.json();
 
-    // resultCtx.name = data.results[0].name;
-    // resultCtx.status = data.results[0].status;
-    // resultCtx.lastLocation = data.results[0].location.name;
-    // resultCtx.episodesNumber = data.results[0].episode.length;
-
-    // resultCtx.results = [...data.results];
     resultCtx.onFetch(data.results);
-
-    // console.log(resultCtx.results);
-
-    // arr.forEach((value) => {
-    //   for (const key in value) {
-    //     if (Object.hasOwnProperty.call(value, key)) {
-    //       const element = value[key];
-    //     }
-    //   }
-    // });
-
-    // console.log(data.results);
-    // resultCtx.name = ]
-
-    // console.log(data);
   };
 
   return (

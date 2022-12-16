@@ -1,12 +1,9 @@
+import DisplayContent from "../components/DisplayContent";
+
 const AllLocations = () => {
-  const response = fetch("https://rickandmortyapi.com/api/character");
-
   return (
-    <div className="all-elements">
-      <h2>All Locations!</h2>
-      <section></section>
-
-      {/* <SearchResults /> */}
+    <div>
+      <DisplayContent page="location" />
     </div>
   );
 };

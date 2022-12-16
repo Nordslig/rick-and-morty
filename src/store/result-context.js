@@ -2,19 +2,28 @@ import React, { useState } from "react";
 
 const resultContext = React.createContext({
   results: [],
+  actualPage: "",
   onFetch: () => {},
+  choosePage: () => {},
 });
 
 export const ResultContextProvider = (props) => {
   const [fetched, setFetched] = useState();
+  const [chosenPage, setChosenPage] = useState();
 
-  const fetchedResults = (dataResults) => {
+  const fetchedResultsHandler = (dataResults) => {
     setFetched(dataResults);
+  };
+
+  const choosePageHandler = (pageName) => {
+    setChosenPage(pageName);
   };
 
   const contextValue = {
     results: fetched,
-    onFetch: fetchedResults,
+    actualPage: chosenPage,
+    onFetch: fetchedResultsHandler,
+    choosePage: choosePageHandler,
   };
 
   return (
