@@ -1,0 +1,21 @@
+.button {
+  width: 10%;
+  margin: 2%;
+  padding: 0.3rem;
+  border: 2px solid #004f00;
+  background-color: #a6d4e1;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  transition: 0.1s;
+}
+
+.button:active {
+  background-color: #3c8da4;
+  color: #fff;
+}
+
+.button:disabled {
+  background-color: rgba(79, 79, 79, 0.609);
+  color: rgba(255, 255, 255, 0.501);
+}

@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import AllElements from "../components/AllElements";
+import Button from "../components/UI/Button";
 
 const AllCharacters = () => {
   const [page, setPage] = useState(1);
@@ -22,27 +23,47 @@ const AllCharacters = () => {
     fetchData();
   }, [page]);
 
+  const nextPageHandler = () => {
+    setPage((prevState) => prevState + 1);
+  };
+
+  const previousPageHandler = () => {
+    setPage((prevState) => prevState - 1);
+  };
+
   return (
     <div>
-      <h2>All Characters!</h2>
+      <div className="centered">
+        <Button
+          name="Previous"
+          disabled={page === 1 ? true : false}
+          func={previousPageHandler}
+        />
+        <h2>All Characters!</h2>
+        <Button
+          name="Next"
+          disabled={page === maxPage ? true : false}
+          func={nextPageHandler}
+        />
+      </div>
       <div className="sections">
         {characters.length === 0 && <p>Something went wrong!</p>}
         {characters.map((char) => {
           return <AllElements key={char.id} data={char} />;
         })}
       </div>
-      <button
-        onClick={() => setPage((prevState) => prevState - 1)}
-        disabled={page === 1 ? true : false}
-      >
-        Previous
-      </button>
-      <button
-        onClick={() => setPage((prevState) => prevState + 1)}
-        disabled={page === maxPage ? true : false}
-      >
-        Next
-      </button>
+      <div className="centered">
+        <Button
+          name="Previous"
+          disabled={page === 1 ? true : false}
+          func={previousPageHandler}
+        />
+        <Button
+          name="Next"
+          disabled={page === maxPage ? true : false}
+          func={nextPageHandler}
+        />
+      </div>
     </div>
   );
 };
