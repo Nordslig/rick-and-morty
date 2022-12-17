@@ -2,7 +2,7 @@ import DisplayContent from "../components/DisplayContent";
 
 const AllCharacters = () => {
   return (
-    <div>
+    <div className="contContent">
       <DisplayContent page="character" />
     </div>
   );

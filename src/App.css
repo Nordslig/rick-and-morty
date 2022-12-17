@@ -38,9 +38,19 @@ main h2 {
 }
 
 .centered {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.centered p {
+  margin-top: 2%;
+  font-size: 2rem;
+}
+
+.contContent {
+  width: 100%;
 }
 
 main {

@@ -2,7 +2,7 @@ import DisplayContent from "../components/DisplayContent";
 
 const AllLocations = () => {
   return (
-    <div>
+    <div className="contContent">
       <DisplayContent page="location" />
     </div>
   );

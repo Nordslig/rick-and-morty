@@ -2,6 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import resultContext from "../store/result-context";
 import AllElements from "./AllElements";
 import Button from "./UI/Button";
+import LoadingSpinner from "./UI/LoadingSpinner";
 
 const DisplayContent = (props) => {
   const [page, setPage] = useState(1);
@@ -38,6 +39,13 @@ const DisplayContent = (props) => {
     setPage((prevState) => prevState - 1);
   };
 
+  const searching = (
+    <div className="centered" style={{ flexDirection: "column" }}>
+      <LoadingSpinner />
+      <p>Something went wrong!</p>
+    </div>
+  );
+
   return (
     <Fragment>
       <div className="centered">
@@ -54,7 +62,7 @@ const DisplayContent = (props) => {
         />
       </div>
       <div className="sections">
-        {characters.length === 0 && <p>Something went wrong!</p>}
+        {characters.length === 0 && searching}
         {characters.map((char) => {
           return <AllElements key={char.id} data={char} />;
         })}
