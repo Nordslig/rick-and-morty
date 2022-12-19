@@ -1,41 +1,134 @@
+import { useEffect, useState } from "react";
 import classes from "./RandomElement.module.css";
 
+const url = "https://rickandmortyapi.com/api/";
+
 const RandomSearch = () => {
-  const charackter = (
-    <section className={classes.section}>
-      <h3 className={classes.name}>Name</h3>
-      {/* <img alt="character image" /> */}
-      <p className={classes.info}>Status</p>
-      <p className={classes.info}>Location</p>
-      <p className={classes.info}>How many episodes they were in?</p>
-    </section>
-  );
+  const [maxPages, setMaxPages] = useState([]);
+  const [eleObj, setEleObj] = useState({ char: {}, loca: {}, epis: {} });
 
-  const location = (
-    <section>
-      <h3>Name</h3>
-      <p>Type</p>
-      <p>Dimension</p>
-      <p>How many residents there have been seen last?</p>
-    </section>
-  );
+  // const randomElementNumber = Math.floor(Math.random() * 20);
 
-  const episode = (
-    <section>
-      <h3>Name</h3>
-      <p>Air date</p>
-      <p>Code of episode</p>
-      <p>How many charackters were in it?</p>
-    </section>
-  );
+  // const drawRandomPage = (maxPage) => {
+  //   const randomPage = Math.floor(Math.random() * maxPage + 1);
+  //   return randomPage;
+  // };
+
+  const randomNumber = (numOfEle) => {
+    let randomEleNum = Math.floor(Math.random() * numOfEle);
+
+    const randomPageNum = Math.floor(randomEleNum / 20) + 1;
+
+    randomEleNum = randomEleNum % 20;
+
+    return { randomPageNum, randomEleNum };
+  };
+
+  useEffect(() => {
+    const fetchMaxPages = async () => {
+      const responseCharacter = await fetch(`${url}character`);
+      const responseLocation = await fetch(`${url}location`);
+      const responseEpisode = await fetch(`${url}episode`);
+
+      const dataChar = await responseCharacter.json();
+      const dataLoca = await responseLocation.json();
+      const dataEpis = await responseEpisode.json();
+
+      const everyMaxPage = [
+        dataChar.info.count,
+        dataLoca.info.count,
+        dataEpis.info.count,
+      ];
+
+      setMaxPages(everyMaxPage);
+    };
+
+    fetchMaxPages();
+  }, []);
+
+  let i = 0;
+
+  maxPages.forEach(async (maxPage) => {
+    const { randomPageNum: pageNum, randomEleNum: eleNum } =
+      randomNumber(maxPage);
+
+    i++;
+
+    const response = await fetch(
+      `${url}${
+        i === 1 ? "character" : i === 2 ? "location" : "episode"
+      }/?page=${pageNum}`
+    );
+
+    const data = await response.json();
+
+    console.log(data.results[eleNum]);
+  });
+
+  // const charackter = (
+  //   <section className={classes.section}>
+  //     <div className={classes.image}>
+  //       <img src={iam} width="150px" height="150 px" alt="character look" />
+  //     </div>
+  //     <div className={classes.info}>
+  //       <h3>Name: </h3>
+  //       <p>{true}</p>
+  //       <h3>Status: </h3>
+  //       <p>{true}</p>
+  //     </div>
+  //     <div className={classes.info}>
+  //       <h3>Last location: </h3>
+  //       <p>{location.name}</p>
+  //       <h3>Number of Episodes:</h3>
+  //       <p>{episode.length}</p>
+  //     </div>
+  //   </section>
+  // );
+
+  // const location = (
+  //   <section className={classes.section}>
+  //     <div className={classes.info}>
+  //       <h3>Name: </h3>
+  //       <p>{true}</p>
+  //       <h3>Type: </h3>
+  //       <p>{type}</p>
+  //     </div>
+  //     <div className={classes.info}>
+  //       <h3>Dimension </h3>
+  //       <p>{dimension}</p>
+  //       <h3>Number of Residents:</h3>
+  //       <p>{residents.length}</p>
+  //     </div>
+  //   </section>
+  // );
+
+  // const episode = (
+  //   <section className={classes.section}>
+  //     <div className={classes.info}>
+  //       <h3>Name: </h3>
+  //       <p>{true}</p>
+  //       <h3>Air date: </h3>
+  //       <p>{air_date}</p>
+  //     </div>
+  //     <div className={classes.info}>
+  //       <h3>Episode Code: </h3>
+  //       <p>{code}</p>
+  //       <h3>Number of characters:</h3>
+  //       <p>{characters.length}</p>
+  //     </div>
+  //   </section>
+  // );
 
   return (
     <div className={classes.RandomSearch}>
       <h2>Your random search is:</h2>
       <div className={classes.sections}>
-        {charackter}
-        {location}
-        {episode}
+        {/* {maxPages.map((maxPage) => {
+          const data = randomNumber(maxpage);
+        })} */}
+        {/* {charackter}
+        {location} */}
+        {/* {episode} */}
       </div>
     </div>
   );
