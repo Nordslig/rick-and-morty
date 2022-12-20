@@ -5,7 +5,9 @@ const url = "https://rickandmortyapi.com/api/";
 
 const RandomSearch = () => {
   const [maxPages, setMaxPages] = useState([]);
-  const [eleObj, setEleObj] = useState({ char: {}, loca: {}, epis: {} });
+  const [charObj, setCharObj] = useState({});
+  const [locaObj, setLocaObj] = useState({});
+  const [episObj, setEpisObj] = useState({});
 
   // const randomElementNumber = Math.floor(Math.random() * 20);
 
@@ -48,23 +50,51 @@ const RandomSearch = () => {
 
   let i = 0;
 
-  maxPages.forEach(async (maxPage) => {
-    const { randomPageNum: pageNum, randomEleNum: eleNum } =
-      randomNumber(maxPage);
+  maxPages.forEach(
+    async (maxPage) => {
+      const { randomPageNum: pageNum, randomEleNum: eleNum } =
+        randomNumber(maxPage);
 
-    i++;
+      const saveData = async () => {};
 
-    const response = await fetch(
-      `${url}${
-        i === 1 ? "character" : i === 2 ? "location" : "episode"
-      }/?page=${pageNum}`
-    );
+      i++;
 
-    const data = await response.json();
+      // console.log(i);
 
-    console.log(data.results[eleNum]);
-  });
+      const response = await fetch(
+        `${url}${
+          i === 1 ? "character" : i === 2 ? "location" : "episode"
+        }/?page=${pageNum}`
+      );
 
+      console.log(i);
+
+      const data = await response.json();
+
+      const keys = data.results[eleNum];
+
+      console.log("species" in keys);
+
+      if ("species" in keys) {
+        const character = {
+          name: keys.name,
+        };
+
+        console.log(character);
+
+        // setCharObj(character);
+        // setCharObj((prevState) => ({
+        //   ...prevState,
+        //   ...character,
+        // }));
+      }
+
+      // console.log(data.results[eleNum]);
+    }
+    // console.log(data.results[eleNum].name);
+  );
+
+  // console.log(charObj);
   // const charackter = (
   //   <section className={classes.section}>
   //     <div className={classes.image}>
