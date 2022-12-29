@@ -1,6 +1,6 @@
 import classes from "./Button.module.css";
 
-const Button = ({ func, name, disabled }) => {
+const Button = ({ func, name, disabled = false }) => {
   return (
     <button
       className={classes.button}
