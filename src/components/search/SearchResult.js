@@ -17,7 +17,8 @@ const SearchResult = () => {
                 <h3>Name:</h3>
                 <p>{result.name}</p>
               </div>
-              {/* <img alt="character image" /> */}
+              {/* </div>
+              {/* <img alt="character image" /> 
               <p className={classes.question}>Status:</p>
               <p className={classes.answer}>{result.status}</p>
               <p className={classes.question}>Location:</p>
@@ -25,7 +26,7 @@ const SearchResult = () => {
               <p className={classes.question}>
                 How many episodes they were in?
               </p>
-              <p className={classes.answer}>{result.episode.length}</p>
+              <p className={classes.answer}>{result.episode.length}</p> */}
             </section>
           );
         })}
