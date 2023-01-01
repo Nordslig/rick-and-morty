@@ -6,8 +6,15 @@ const apiLink = "https://rickandmortyapi.com/api/";
 
 const SearchBar = ({ filter }) => {
   const enteredNameRef = useRef();
+
+  const enteredStatusRef = useRef();
+  const enteredSpeciesRef = useRef();
+  // const enteredTypeRef = useRef();
+  const enteredGenderRef = useRef();
+
   const enteredTypeRef = useRef();
   const enteredDimenRef = useRef();
+
   const enteredEpCodeRef = useRef();
 
   const resultCtx = useContext(ResultContext);
@@ -20,26 +27,37 @@ const SearchBar = ({ filter }) => {
 
     const enteredName = enteredNameRef.current.value;
 
+    if (filter === "character") {
+      const enteredStatus = enteredStatusRef.current.value;
+      const enteredSpecies = enteredSpeciesRef.current.value;
+      const enteredType = enteredTypeRef.current.value;
+      const enteredGender = enteredGenderRef.current.value;
+
+      filteredString = `status=${enteredStatus}&species=${enteredSpecies}&type=${enteredType}&gender=${enteredGender}`;
+    }
+
     if (filter === "location") {
       const enteredType = enteredTypeRef.current.value;
       const enteredDimension = enteredDimenRef.current.value;
+
       filteredString = `type=${enteredType}&dimension=${enteredDimension}`;
     }
 
     if (filter === "episode") {
       const enteredCode = enteredEpCodeRef.current.value;
+
       filteredString = `episode=${enteredCode}`;
     }
 
-    console.log(
-      `${apiLink}${filter}/?name=${enteredName ? enteredName : ""}&${
-        filter === "location"
-          ? filteredString
-          : filter === "episode"
-          ? filteredString
-          : ""
-      }`
-    );
+    // console.log(
+    //   `${apiLink}${filter}/?name=${enteredName ? enteredName : ""}&${
+    //     filter === "location"
+    //       ? filteredString
+    //       : filter === "episode"
+    //       ? filteredString
+    //       : ""
+    //   }`
+    // );
 
     const response = await fetch(
       `${apiLink}${filter}/?name=${enteredName}&${
@@ -53,20 +71,40 @@ const SearchBar = ({ filter }) => {
   };
 
   const characterFilter = (
-    <Fragment>
-      {/* <label htmlFor="" className={classes.label}>
-        Episode Code
+    <div className="form">
+      <label htmlFor="status" className={classes.label}>
+        Status
       </label>
       <input
-        htmlFor=""
+        htmlFor="status"
         className={classes.input}
-        ref={enteredEpCodeRef}
-      /> */}
-    </Fragment>
+        ref={enteredStatusRef}
+      />
+      <label htmlFor="species" className={classes.label}>
+        Species
+      </label>
+      <input
+        htmlFor="species"
+        className={classes.input}
+        ref={enteredSpeciesRef}
+      />
+      <label htmlFor="type" className={classes.label}>
+        Type
+      </label>
+      <input htmlFor="type" className={classes.input} ref={enteredTypeRef} />
+      <label htmlFor="gender" className={classes.label}>
+        Gender
+      </label>
+      <input
+        htmlFor="gender"
+        className={classes.input}
+        ref={enteredGenderRef}
+      />
+    </div>
   );
 
   const locationFilter = (
-    <Fragment>
+    <div className="form">
       <label htmlFor="type" className={classes.label}>
         Type
       </label>
@@ -79,11 +117,11 @@ const SearchBar = ({ filter }) => {
         className={classes.input}
         ref={enteredDimenRef}
       />
-    </Fragment>
+    </div>
   );
 
   const episodeFilter = (
-    <Fragment>
+    <div className="form">
       <label htmlFor="epCode" className={classes.label}>
         Episode Code
       </label>
@@ -92,7 +130,7 @@ const SearchBar = ({ filter }) => {
         className={classes.input}
         ref={enteredEpCodeRef}
       />
-    </Fragment>
+    </div>
   );
 
   return (
