@@ -7,7 +7,6 @@ const MainPage = () => {
   const [filteringItem, setFilteringItem] = useState("character");
 
   const switchFilterHandler = (filter) => {
-    // console.log(filter);
     setFilteringItem(filter);
   };
 

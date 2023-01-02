@@ -9,7 +9,6 @@ const SearchBar = ({ filter }) => {
 
   const enteredStatusRef = useRef();
   const enteredSpeciesRef = useRef();
-  // const enteredTypeRef = useRef();
   const enteredGenderRef = useRef();
 
   const enteredTypeRef = useRef();
@@ -49,20 +48,8 @@ const SearchBar = ({ filter }) => {
       filteredString = `episode=${enteredCode}`;
     }
 
-    // console.log(
-    //   `${apiLink}${filter}/?name=${enteredName ? enteredName : ""}&${
-    //     filter === "location"
-    //       ? filteredString
-    //       : filter === "episode"
-    //       ? filteredString
-    //       : ""
-    //   }`
-    // );
-
     const response = await fetch(
-      `${apiLink}${filter}/?name=${enteredName}&${
-        filter === "location" ? filteredString : ""
-      }`
+      `${apiLink}${filter}/?name=${enteredName}&${filteredString}`
     );
 
     const data = await response.json();
