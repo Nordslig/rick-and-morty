@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Element from "./Element";
 import classes from "./RandomElement.module.css";
 
 const url = "https://rickandmortyapi.com/api/";
@@ -7,12 +8,12 @@ const RandomSearch = () => {
   const [maxPages, setMaxPages] = useState([]);
   const [charObj, setCharObj] = useState([]);
   const charRef = useRef();
-  const [locaObj, setLocaObj] = useState({});
-  const [episObj, setEpisObj] = useState({});
+  // const [locaObj, setLocaObj] = useState({});
+  // const [episObj, setEpisObj] = useState({});
 
-  const charackter = (data) => {
-    setCharObj(data);
-  };
+  // const charackter = (data) => {
+  //   setCharObj(data);
+  // };
 
   const randomNumber = (numOfEle) => {
     let randomEleNum = Math.floor(Math.random() * numOfEle);
@@ -58,38 +59,41 @@ const RandomSearch = () => {
 
         const data = await response.json();
 
+        console.log(data);
+
         const keys = data.results[eleNum];
 
         if ("species" in keys) {
           const character = {
             id: keys.id,
+            image: keys.image,
             name: keys.name,
             status: keys.status,
             location: keys.location.name,
             episodes: keys.episode.length,
+            currentEle: "character",
           };
 
           setCharObj((prevState) => [...prevState, character]);
-        }
-
-        if ("dimension" in keys) {
+        } else if ("dimension" in keys) {
           const location = {
             id: keys.id,
             name: keys.name,
             type: keys.type,
             dimension: keys.dimension,
             residents: keys.residents.length,
+            currentEle: "location",
           };
 
           setCharObj((prevState) => [...prevState, location]);
-        }
-
-        if ("episode" in keys) {
+        } else {
           const episode = {
             id: keys.id,
             name: keys.name,
             air_date: keys.air_date,
             episode: keys.episode,
+            characters: keys.characters,
+            currentEle: "episode",
           };
 
           setCharObj((prevState) => [...prevState, episode]);
@@ -100,34 +104,24 @@ const RandomSearch = () => {
     fetchMaxPages();
   }, []);
 
-  const Element = (props) => {
-    return (
-      <section key={props.data.id} className={classes.section}>
-        <div className={classes.image}>
-          <img src="" width="150px" height="150 px" alt="character look" />
-        </div>
-        <div className={classes.info}>
-          <h3>Name: </h3>
-          <p>{props.data.name}</p>
-          <h3>Status: </h3>
-          <p>{true}</p>
-        </div>
-        <div className={classes.info}>
-          <h3>Last location: </h3>
-          <p>{props.data.location}</p>
-          <h3>Number of Episodes:</h3>
-          <p>{props.data.episodes}</p>
-        </div>
-      </section>
-    );
-  };
+  console.log(charObj);
 
   return (
     <div className={classes.RandomSearch}>
       <h2>Your random search is:</h2>
       <div className={classes.sections}>
         {charObj.map((obj) => (
-          <Element data={obj} />
+          <Element
+            key={obj.id}
+            data={obj}
+            currentElement={
+              obj.currentEle === "character"
+                ? obj.currentEle
+                : obj.currentEle === "location"
+                ? obj.currentEle
+                : obj.currentEle
+            }
+          />
         ))}
       </div>
     </div>
